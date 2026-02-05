@@ -9,11 +9,40 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: SFBuild
+    jobs: 
+      - job: Build
+        steps:
+            - script: echo 'SFBuild is running'
+              displayName: echo 'Run a single-line script'
+            - script: |
+                echo 'Multi Line -1 '
+                echo 'Multi Line -2 '
+              displayName: 'Run a multi-line script'  
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - stage: SFDeploy
+    jobs: 
+      - job: Deploy
+        steps:
+            - script: echo 'SFDeploy is running'
+              displayName: echo 'Run a single-line script'
+            - script: |
+                echo 'Multi Line -1 '
+                echo 'Multi Line -2 '
+              displayName: 'Run a multi-line script'  
+  
+  - stage: SFTest
+    jobs: 
+      - job: Test
+        steps:
+            - script: echo 'SFDeploy is running'
+              displayName: echo 'Run a single-line script'
+            - script: |
+                echo 'Multi Line -1 '
+                echo 'Multi Line -2 '
+              displayName: 'Run a multi-line script'  
+
+
+
+
