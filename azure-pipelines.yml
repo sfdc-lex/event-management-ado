@@ -21,8 +21,16 @@ stages:
                 echo 'Multi Line -2 '
               displayName: 'Run a multi-line script'  
 
-  - stage: SFDeploy
+  - stage: SFValidateAndDeploy
     jobs: 
+      - job: Validate
+        steps:
+            - script: node --v
+              displayName: checking node version
+            - script: |
+                echo 'Multi Line -1 '
+                echo 'Multi Line -2 '
+              displayName: 'Run a multi-line script'  
       - job: Deploy
         steps:
             - script: echo 'SFDeploy is running'
@@ -30,8 +38,7 @@ stages:
             - script: |
                 echo 'Multi Line -1 '
                 echo 'Multi Line -2 '
-              displayName: 'Run a multi-line script'  
-  
+              displayName: 'Run a multi-line script'    
   - stage: SFTest
     jobs: 
       - job: Test
