@@ -25,7 +25,7 @@ stages:
     jobs: 
       - job: Validate
         steps:
-            - script: node --v
+            - script: node -v
               displayName: checking node version
             - script: |
                 echo 'Multi Line -1 '
